@@ -2,7 +2,7 @@
 Getting Started
 To install this example application, run the following commands:
 
-git clone https://github.com/oktadeveloper/spring-boot-microservices-example.git
+git clone https://github.com/spandey2/CreditCardTest/tree/master
 cd spring-boot-microservices-example
 
 
