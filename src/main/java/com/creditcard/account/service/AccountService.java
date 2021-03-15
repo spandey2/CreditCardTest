@@ -22,13 +22,15 @@ public class AccountService {
 	AccountRepository repository;
 
 	// Save account entity in the h2 database.
-	public void save(final Account account)  {
-		Account accountData=repository.save(account);
+	public Account save(final Account account)  {
+		Account accountData = repository.save(account);
+		return accountData;
 	}
 
 	// Get all account from the h2 database.
 	public List<Account> getAll() throws NoRecordFoundException {
 		final List<Account> accounts = new ArrayList<>();
+
 		repository.findAll().forEach(account -> accounts.add(account));
 		return accounts;
 	}

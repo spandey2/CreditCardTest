@@ -37,12 +37,24 @@ public class AccountController {
 		Validation validation = new Validation();
 
 		//code to check  Luhn 10 credit card number
-		if(!validation.isValidCreditCardNumber(account.getCard())){
-			final MessageResponse msg = new MessageResponse();
-			msg.setMessage("Card Number is invalid");
-			return new ResponseEntity<>(msg, HttpStatus.BAD_REQUEST);
+		if(!validation.isValidCreditCardNumber(account.getCard()))
+			{
+				final MessageResponse msg = new MessageResponse();
+				msg.setMessage("Card Number is invalid");
+				return new ResponseEntity<>(msg, HttpStatus.BAD_REQUEST);
+			}
+		//New cards start with a £0 balance
+		if(account.getBalance()>0){
+			{
+				final MessageResponse msg = new MessageResponse();
+					msg.setMessage("New cards start with a £0 balance");
+					return new ResponseEntity<>(msg, HttpStatus.BAD_REQUEST);
+			}
+
+
 		}
-			accountService.save(account);
+		//call service
+		accountService.save(account);
 		return new ResponseEntity<>(account.getId(), HttpStatus.OK);
 	}
 

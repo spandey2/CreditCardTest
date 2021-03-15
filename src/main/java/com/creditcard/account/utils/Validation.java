@@ -2,14 +2,14 @@ package com.creditcard.account.utils;
 
 import java.util.Arrays;
 
-public class Validation {
+public class  Validation {
 
-    public  int sumDigits(int[] arr)
+    public  int  sumDigits(int[] arr)
     {
         return Arrays.stream(arr).sum();
     }
 
-    public  boolean isValidCreditCardNumber(String cardNumber)
+    public  boolean  isValidCreditCardNumber(String cardNumber)
     {
         // int array for processing the cardNumber
         int[] cardIntArray=new int[cardNumber.length()];

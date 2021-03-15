@@ -3,20 +3,19 @@ package com.creditcard.account.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 // @Entity annotation specifies that the class is mapped to a database table.
 @Entity
+@SequenceGenerator(name="account_id_seq", initialValue=1, allocationSize=100)
 public class Account {
 
 	// @Id annotation specifies the primary key of an entity.
 	// @GeneratedValue provides the generation strategy specification for the primary key values.
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="account_id_seq")
 	private int id;
 	private String name;
 	@Size(max = 19, message = "Credit card numbers length should be 19 characters")
