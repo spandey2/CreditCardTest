@@ -3,6 +3,7 @@ package com.creditcard.account.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,7 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     {
         http
                 .csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
+                .authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/metrics").permitAll()
+                .antMatchers(HttpMethod.GET, "/**").fullyAuthenticated()
+                .antMatchers(HttpMethod.POST, "/**").fullyAuthenticated()
+                .anyRequest().fullyAuthenticated()
                 .and()
                 .httpBasic();
     }
@@ -39,4 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("{noop}password")
                 .roles("USER");
     }
+
+
 }

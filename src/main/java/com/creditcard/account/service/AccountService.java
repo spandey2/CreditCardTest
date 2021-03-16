@@ -2,8 +2,6 @@ package com.creditcard.account.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.creditcard.account.domain.MessageResponse;
 import com.creditcard.account.exception.NoRecordFoundException;
 import com.creditcard.account.utils.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,19 +17,18 @@ public class AccountService {
 
 	// @Autowired annotation provides the automatic dependency injection.
 	@Autowired
-	AccountRepository repository;
+	AccountRepository accountRepository;
 
 	// Save account entity in the h2 database.
 	public Account save(final Account account)  {
-		Account accountData = repository.save(account);
+		Account accountData = accountRepository.save(account);
 		return accountData;
 	}
 
 	// Get all account from the h2 database.
 	public List<Account> getAll() throws NoRecordFoundException {
 		final List<Account> accounts = new ArrayList<>();
-
-		repository.findAll().forEach(account -> accounts.add(account));
+		accountRepository.findAll().forEach(account -> accounts.add(account));
 		return accounts;
 	}
 }

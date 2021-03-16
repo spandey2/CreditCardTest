@@ -26,7 +26,7 @@ public class AccountController {
 	/**
 	* description- Save account entity in the h2 database.
 	* @PostMapping annotation handles the http post request matched with the given uri.
-	* @RequestBody annotation binds the http request body to the domain object.
+	* @RequestBody annotation binds the http request body to the domain object.Ø
 	* @Valid annotation validates a model after binding the user input to it.
 	* @return the ResponseEntity object
 	*/

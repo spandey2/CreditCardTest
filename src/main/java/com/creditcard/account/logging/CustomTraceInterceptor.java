@@ -41,8 +41,8 @@ public class CustomTraceInterceptor extends CustomizableTraceInterceptor {
 	public Advisor traceAdvisor() {
 		final AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
 
-		pointcut.setExpression("execution(* com.creditcard.account.controller..*.*(..))");
-		//pointcut.setExpression("execution(* com.creditcard.account.controller..*.*(..)) || execution(* com.creditcard.account.domain..*.*(..)) || execution(* com.creditcard.account.repository..*.*(..)) || execution(* com.creditcard.account.service..*.*(..))");
+		//pointcut.setExpression("execution(* com.creditcard.account.controller..*.*(..))");
+		pointcut.setExpression("execution(* com.creditcard.account.controller..*.*(..)) || execution(* com.creditcard.account.domain..*.*(..)) || execution(* com.creditcard.account.repository..*.*(..)) || execution(* com.creditcard.account.service..*.*(..))");
 		return new DefaultPointcutAdvisor(pointcut, customizableTraceInterceptor());
 	}
 

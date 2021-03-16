@@ -1,16 +1,23 @@
 
 Getting Started
+
+prerequisites
+
+1-java 1.8 install in machine
+2-docker install in machine
+3-git install in machine
+
+
 To install this example application, run the following commands:
 
 git clone https://github.com/spandey2/CreditCardTest/tree/master
-cd spring-boot-microservices-example
+cd CreditCardTest
 
 
 Create Applications
 
 Application Name: CreditCards
 Base URIs: http://localhost:8080
-
 Can change the port in application.properties
 
 Docker
