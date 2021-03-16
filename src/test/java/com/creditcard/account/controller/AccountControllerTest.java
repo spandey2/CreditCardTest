@@ -121,6 +121,17 @@ public class AccountControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-
+    // test case for invalid mediatype for save method
+    @Test
+    @WithMockUser
+    public void testToValidNotJsonSaveMethod()throws Exception {
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        Account account = new Account(1, "Smita", "1358954993914435", 0,800);
+        String json = ow.writeValueAsString(account);
+        when(validation.isValidCreditCardNumber(account.getCard())).thenReturn(true);
+        when(accountService.save(account)).thenReturn(account);
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/account/add").contentType(MediaType.APPLICATION_ATOM_XML).content(json))
+                .andExpect(MockMvcResultMatchers.status().isUnsupportedMediaType());
+    }
 
 }
