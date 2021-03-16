@@ -1,44 +1,40 @@
 
-Getting Started
+Getting Started. 
 
-prerequisites
+Prerequisites:
 
-1-java 1.8 install in machine
-2-docker install in machine
-3-git install in machine
+1: java 1.8 install in machine<br />
+2: docker install in machine<br />
+3: git install in machine<br />
 
 
 To install this example application, run the following commands:
 
-git clone https://github.com/spandey2/CreditCardTest/tree/master
-cd CreditCardTest
+git clone https://github.com/spandey2/CreditCardTest/tree/master<br />
+cd CreditCardTest<br />
 
 
 Create Applications:
 
-Application Name: CreditCards
-Base URIs: http://localhost:8080
+Application Name: CreditCards<br />
+Base URI http://localhost:8080
+
 Can change the port in application.properties
 
-Maven:
+Maven:<br />
+mvn clean package<br />
 
-mvn clean package
+Docker:<br />
+docker build -t account-java . <br />
+docker run -p 8080:8080 -it --rm account-java<br />
 
-
-Docker:
-// docker build command
-docker build -t account-java .
-// docker run command
-docker run -p 8080:8080 -it --rm account-java
-
-Api for creating credit card for a given name, card number, and limit
+Api for creating credit card for a given name, card number, and limit<br />
 /api/account/add
 
-Api for returning all cards in the system
-
+Api for returning all cards in the system<br />
 /api/account/getall
 
-Used H2 in-memory DB to store the information while the API is running
+I have used H2 in-memory DB to store the information while the API is running.
 
 Basic authentication is added in the service -check the username password from application.properties
 
