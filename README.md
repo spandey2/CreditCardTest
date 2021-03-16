@@ -26,9 +26,7 @@ mvn clean package
 
 
 Docker:
-// docker build command
 docker build -t account-java .
-// docker run command
 docker run -p 8080:8080 -it --rm account-java
 
 Api for creating credit card for a given name, card number, and limit
